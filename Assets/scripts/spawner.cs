@@ -28,12 +28,12 @@ public class spawner : MonoBehaviour
         else if (score<30)
         {
             a = 0.5f;
-            b = 1.5f;
+            b = 2f;
         }
-        else if(score<60)
+        else if(score<65)
         {
-            a = 0.1f;
-            b = 1f;
+            a = 0.5f;
+            b = 1.5f;
         }
         else
         {

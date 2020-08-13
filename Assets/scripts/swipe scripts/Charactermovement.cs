@@ -19,11 +19,11 @@ public class Charactermovement : MonoBehaviour
     {
         if (swipecontrols.SwipeLeft || Input.GetKey(KeyCode.LeftArrow))
         {
-            desireddir += Vector3.left * 1f;
+            desireddir.x += -0.75f;
         }
         else if (swipecontrols.SwipeRight || Input.GetKey(KeyCode.RightArrow))
         {
-            desireddir += Vector3.right *  1f;
+            desireddir.x += 0.75f;
         }
         player.transform.position = Vector3.MoveTowards(player.transform.position, desireddir, speed * Time.deltaTime);
         desireddir.x = Mathf.Clamp(desireddir.x, -1 * xrange, xrange);

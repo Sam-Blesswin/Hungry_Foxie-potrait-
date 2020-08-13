@@ -10,6 +10,7 @@ public class playerhealth : MonoBehaviour
 
     public int numofhearts=3;
     public Image[] hearts;
+    public GameObject explosion;
 
     private Charactermovement controller;
 
@@ -47,7 +48,7 @@ public class playerhealth : MonoBehaviour
             isdead = true;
             Destroy(gameObject,2f);
             Time.timeScale = 0f;
-            //controller.enabled = false;   //for swipe input
+            controller.enabled = false;   //for swipe input
             ongame.enabled = false;
             end.exit.enabled = true;
         }
@@ -63,6 +64,7 @@ public class playerhealth : MonoBehaviour
         if(enemy.gameObject.tag=="enemy")
         {
             Destroy(enemy.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             health -= 1;
             numofhearts -= 1;
         }

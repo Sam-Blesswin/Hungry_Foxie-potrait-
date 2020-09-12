@@ -13,16 +13,20 @@ public class playerhealth : MonoBehaviour
     public GameObject explosion;
 
     private Charactermovement controller;
+    private PlayFabStats PFS;
 
     private exitmenu end;
     public Canvas ongame;
     private bool isdead;
+
+
 
     private void Start()
     {
         isdead = false;
         Time.timeScale = 1f;
         controller = GameObject.FindObjectOfType<Charactermovement>();
+        PFS = GameObject.FindObjectOfType<PlayFabStats>();
         end = GameObject.FindObjectOfType<exitmenu>();
     }
 
@@ -39,12 +43,16 @@ public class playerhealth : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-        dead();
+        if(!isdead)
+        {
+            dead();
+        } 
     }
     private void dead()
     {
         if(health<0)
         {
+            PFS.StartCloudUpdatePlayerStats();
             isdead = true;
             Destroy(gameObject,2f);
             Time.timeScale = 0f;
@@ -52,11 +60,6 @@ public class playerhealth : MonoBehaviour
             ongame.enabled = false;
             end.exit.enabled = true;
         }
-    }
-
-    public bool getdeadstatus()
-    {
-        return isdead;
     }
 
     private void OnCollisionEnter(Collision enemy)

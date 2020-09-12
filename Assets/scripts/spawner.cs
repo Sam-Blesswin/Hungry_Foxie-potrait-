@@ -20,20 +20,21 @@ public class spawner : MonoBehaviour
     
     public void updatelevel(int score)
     {
-        if(score<10)
+        if(score<5)
         {
             a = 1f;
             b = 3f;
         }
-        else if (score<30)
+        else if (score<25)
         {
             a = 0.5f;
             b = 2f;
         }
-        else if(score<65)
+        else if(score<60)
         {
-            a = 0.5f;
+            a = 0.25f;
             b = 1.5f;
+            l = 4;
         }
         else
         {
